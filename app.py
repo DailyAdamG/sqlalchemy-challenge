@@ -33,6 +33,8 @@ app = Flask(__name__)
 # Flask Routes
 #################################################
 
+#Home Page
+
 @app.route("/")
 
 def welcome():
@@ -47,6 +49,7 @@ def welcome():
 
     )
 
+#Rainfall list
 
 @app.route("/api/v1.0/precipitation")
 
@@ -71,6 +74,7 @@ def prcp():
 
     return jsonify(rainfall_dates)
 
+#Stations
 
 @app.route("/api/v1.0/stations")
 
@@ -84,6 +88,7 @@ def stations():
 
     return jsonify(station_list)
 
+#Temperatures over the last year
 
 @app.route("/api/v1.0/tobs")
 
@@ -107,6 +112,8 @@ def temperatures():
         temp_dates.append(temp_dict)
 
     return jsonify(temp_dates)
+
+#Temp stats for single date
 
 @app.route("/api/v1.0/start_date/<start_date>")
 
@@ -132,6 +139,8 @@ def calc_temps_single_date(start_date):
 
 
     return jsonify(one_date_temp_dict)
+
+#Temp stats for start and end dates
 
 @app.route("/api/v1.0/start_date/end_date/<start_date>/<end_date>")
 
